@@ -1,0 +1,12 @@
+# GemmaSWE: Autonomous AI Software Engineering Agent
+# Powered by Google Gemma Models (Gemma 2 27B / 9B / 2B)
+
+# Core Dependencies
+pydantic>=2.0.0
+fastapi>=0.110.0
+uvicorn>=0.28.0
+rich>=13.7.0
+httpx>=0.27.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
+google-generativeai>=0.8.0

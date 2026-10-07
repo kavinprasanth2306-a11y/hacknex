@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemmaSWE — Antigravity & VS Code Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="vscode-theme">
+    <div class="workbench">
+        <!-- Titlebar -->
+        <header class="titlebar">
+            <div class="titlebar-left">
+                <span class="app-icon">✦</span>
+                <span class="app-title">GemmaSWE IDE — [HNX26PSI09] Autonomous SWE Agent</span>
+            </div>
+            <div class="titlebar-center">
+                <div class="command-palette-trigger">
+                    <span class="search-icon">🔍</span>
+                    <span>hacknex — auth_service.py</span>
+                </div>
+            </div>
+            <div class="titlebar-right">
+                <div class="model-badge">
+                    <span class="status-dot"></span>
+                    <span id="model-badge-text">Gemma 2 27B / 9B Ready</span>
+                </div>
+                <div class="window-controls">
+                    <span>─</span>
+                    <span>◻</span>
+                    <span>✕</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="workbench-main">
+            <!-- 1. Activity Bar (Leftmost icons) -->
+            <nav class="activity-bar">
+                <div class="activity-top">
+                    <button class="activity-item active" data-view="explorer-view" title="Explorer (Ctrl+Shift+E)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2z"></path></svg>
+                    </button>
+                    <button class="activity-item" data-view="git-view" title="Source Control / Diffs (Ctrl+Shift+G)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+                        <span class="activity-badge" id="diff-badge">0</span>
+                    </button>
+                    <button class="activity-item" data-view="test-view" title="Testing & Regression Guard">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"></path></svg>
+                        <span class="activity-badge green" id="test-badge">✓</span>
+                    </button>
+                    <button class="activity-item" data-view="score-view" title="Hackathon Evaluation Scorecard (100 Pts)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    </button>
+                </div>
+                <div class="activity-bottom">
+                    <button class="activity-item" data-view="settings-view" title="Settings">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- 2. Primary Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span id="sidebar-title">EXPLORER: HNX26PSI09</span>
+                    <div class="sidebar-actions">
+                        <span title="New File">＋</span>
+                        <span title="Refresh" id="refresh-files-btn">↻</span>
+                    </div>
+                </div>
+
+                <!-- View 1: Explorer File Tree -->
+                <div class="sidebar-view active" id="explorer-view">
+                    <!-- Scenario Quick Switcher -->
+                    <div class="section-group">
+                        <div class="section-title">BENCHMARK SCENARIO</div>
+                        <div class="scenario-selector-box">
+                            <select id="scenario-dropdown">
+                                <option value="auth_session_bugfix" selected>Scenario 1: Auth & Token Expiry Bug</option>
+                                <option value="ratelimit_preservation">Scenario 2: Multi-File Rate Limiter</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- File Tree -->
+                    <div class="section-group">
+                        <div class="section-title">WORKSPACE FILES</div>
+                        <ul class="file-tree" id="file-tree-list">
+                            <li class="file-item active" data-file="auth_service.py">
+                                <span class="file-icon py">🐍</span>
+                                <span class="file-name">auth_service.py</span>
+                                <span class="file-tag bug-tag">Bugged</span>
+                            </li>
+                            <li class="file-item" data-file="test_auth_baseline.py">
+                                <span class="file-icon test">🧪</span>
+                                <span class="file-name">test_auth_baseline.py</span>
+                                <span class="file-tag pass-tag">Baseline</span>
+                            </li>
+                            <li class="file-item" data-file="test_token_refresh.py">
+                                <span class="file-icon test">🧪</span>
+                                <span class="file-name">test_token_refresh.py</span>
+                                <span class="file-tag fail-tag">Target</span>
+                            </li>
+                            <li class="file-item" data-file="hidden_tests.py">
+                                <span class="file-icon lock">🔒</span>
+                                <span class="file-name">hidden_tests.py</span>
+                                <span class="file-tag hidden-tag">30 Pts</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Rules Checklist -->
+                    <div class="section-group rules-widget">
+                        <div class="section-title">JUDGING CONSTRAINTS</div>
+                        <ul class="ide-rules">
+                            <li><span class="rule-led pass" id="led-regression">●</span> Regression Immunity (30 pts)</li>
+                            <li><span class="rule-led pass" id="led-apis">●</span> Real APIs Only (20 pts)</li>
+                            <li><span class="rule-led pass" id="led-minimal">●</span> Clean & Minimal Patch (15 pts)</li>
+                            <li><span class="rule-led pass" id="led-hidden">●</span> Hidden Tests (30 pts)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- View 2: Source Control / Git -->
+                <div class="sidebar-view" id="git-view">
+                    <div class="section-group">
+                        <div class="section-title">CHANGES</div>
+                        <ul class="git-changes-list" id="git-changes-list">
+                            <li class="git-file" data-file="auth_service.py">
+                                <span class="git-status-m">M</span>
+                                <span>auth_service.py</span>
+                                <span class="git-diff-stat" id="git-diff-stat">+12 -3</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- View 3: Test Explorer -->
+                <div class="sidebar-view" id="test-view">
+                    <div class="section-group">
+                        <div class="section-title">TEST SUITE & REGRESSION GUARD</div>
+                        <div class="test-health-card">
+                            <div class="th-row">
+                                <span>Baseline Tests:</span>
+                                <span id="sb-baseline-val" class="green-text">3 Passed (Locked)</span>
+                            </div>
+                            <div class="th-row">
+                                <span>Target Acceptance:</span>
+                                <span id="sb-target-val" class="yellow-text">1 Initially Failing</span>
+                            </div>
+                            <div class="th-row">
+                                <span>Regressions:</span>
+                                <span id="sb-reg-val" class="green-text">0 Regressions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View 4: Evaluation Scorecard -->
+                <div class="sidebar-view" id="score-view">
+                    <div class="section-group">
+                        <div class="section-title">EVALUATION SCORECARD</div>
+                        <div class="score-card-sidebar">
+                            <div class="score-big" id="sidebar-score-num">100</div>
+                            <div class="score-label">OUT OF 100 POINTS</div>
+                            <div class="score-verdict" id="sidebar-verdict">PASSED</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View 5: Settings -->
+                <div class="sidebar-view" id="settings-view">
+                    <div class="section-group">
+                        <div class="section-title">GEMMA CONFIGURATION</div>
+                        <div class="form-row">
+                            <label>Provider:</label>
+                            <select id="ide-provider-select">
+                                <option value="mock" selected>GemmaSWE Simulator (Instant)</option>
+                                <option value="google">Google AI Studio (Gemma 2 27B)</option>
+                                <option value="groq">Groq Cloud (Gemma 2 9B)</option>
+                                <option value="openrouter">OpenRouter (Gemma 2)</option>
+                                <option value="ollama">Ollama (Local CPU)</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label>API Key:</label>
+                            <input type="password" id="ide-api-key" placeholder="Enter API Key" />
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 3. Center Editor & Panel Area -->
+            <div class="editor-area">
+                <!-- Editor Tabs -->
+                <div class="editor-tabs" id="editor-tabs">
+                    <div class="editor-tab active" data-tab-id="code-tab">
+                        <span class="tab-icon">🐍</span>
+                        <span class="tab-label" id="active-tab-title">auth_service.py</span>
+                        <span class="tab-close">×</span>
+                    </div>
+                    <div class="editor-tab" data-tab-id="diff-tab">
+                        <span class="tab-icon">🔀</span>
+                        <span class="tab-label">Diff: auth_service.py</span>
+                        <span class="tab-close">×</span>
+                    </div>
+                </div>
+
+                <!-- Breadcrumb Bar -->
+                <div class="breadcrumbs">
+                    <span>hacknex</span>
+                    <span class="bc-sep">›</span>
+                    <span id="bc-filename">auth_service.py</span>
+                    <span class="bc-sep">›</span>
+                    <span id="bc-symbol">class TokenManager</span>
+                    <span class="bc-sep">›</span>
+                    <span id="bc-subsymbol">def refresh_session</span>
+                </div>
+
+                <!-- Editor Body -->
+                <div class="editor-pane active" id="code-tab">
+                    <div class="code-editor-wrapper">
+                        <div class="editor-line-numbers" id="line-numbers"></div>
+                        <pre class="editor-content" id="code-content"><code>// Loading codebase content...</code></pre>
+                    </div>
+                </div>
+
+                <!-- Diff Viewer Pane -->
+                <div class="editor-pane" id="diff-tab">
+                    <div class="diff-editor-wrapper">
+                        <div class="diff-banner" id="diff-banner">Unified Diff Viewer — Changes applied by GemmaSWE</div>
+                        <pre class="diff-content" id="diff-content"><code>// No diff recorded yet. Launch agent to see edits.</code></pre>
+                    </div>
+                </div>
+
+                <!-- Bottom Panel (VS Code Terminal / Output) -->
+                <div class="bottom-panel">
+                    <div class="panel-tabbar">
+                        <div class="panel-tabs">
+                            <button class="panel-tab active" data-panel="output-panel">TERMINAL & OUTPUT</button>
+                            <button class="panel-tab" data-panel="thoughts-panel">GEMMA AGENT THOUGHTS</button>
+                            <button class="panel-tab" data-panel="scorecard-panel">JUDGE EVALUATION (100 PTS)</button>
+                            <button class="panel-tab" data-panel="problems-panel">PROBLEMS & AUDIT (0)</button>
+                        </div>
+                        <div class="panel-controls">
+                            <span title="Clear Terminal" id="clear-term-btn">⊘</span>
+                            <span title="Toggle Maximize">⤢</span>
+                            <span title="Close Panel">✕</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <!-- Panel Tab 1: Terminal & Output -->
+                        <div class="panel-view active" id="output-panel">
+                            <div class="terminal-log" id="terminal-log">
+                                <div class="term-line prompt-line">$ gemmaswe --task "Solve bug and preserve working baseline"</div>
+                                <div class="term-line info-line">[INFO] Ready. Click 'Launch GemmaSWE' in the Antigravity copilot panel to begin.</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel Tab 2: Chain-of-thought -->
+                        <div class="panel-view" id="thoughts-panel">
+                            <div class="thought-stream" id="thought-stream">
+                                <div class="empty-thought">Agent has not started. Click Launch GemmaSWE to initiate autonomous reasoning.</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel Tab 3: Judge Scorecard -->
+                        <div class="panel-view" id="scorecard-panel">
+                            <div class="scorecard-grid-view" id="scorecard-grid-view">
+                                <div class="score-tile">
+                                    <span class="tile-title">Regression Immunity</span>
+                                    <span class="tile-pts green" id="pts-regression">30 / 30</span>
+                                    <span class="tile-status">Working tests intact</span>
+                                </div>
+                                <div class="score-tile">
+                                    <span class="tile-title">Real APIs Only</span>
+                                    <span class="tile-pts green" id="pts-apis">20 / 20</span>
+                                    <span class="tile-status">Zero fake imports</span>
+                                </div>
+                                <div class="score-tile">
+                                    <span class="tile-title">Hidden Edge Cases</span>
+                                    <span class="tile-pts green" id="pts-hidden">30 / 30</span>
+                                    <span class="tile-status">Rapid rotation verified</span>
+                                </div>
+                                <div class="score-tile">
+                                    <span class="tile-title">Clean & Minimal</span>
+                                    <span class="tile-pts green" id="pts-minimal">15 / 15</span>
+                                    <span class="tile-status">Small targeted diff</span>
+                                </div>
+                                <div class="score-tile">
+                                    <span class="tile-title">Root Cause Clarity</span>
+                                    <span class="tile-pts green" id="pts-explanation">10 / 10</span>
+                                    <span class="tile-status">Comprehensive report</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel Tab 4: Problems / Static Audit -->
+                        <div class="panel-view" id="problems-panel">
+                            <div class="audit-list" id="audit-list">
+                                <div class="audit-item success">✔ No nonexistent imports detected in codebase.</div>
+                                <div class="audit-item success">✔ Syntax tree verified against Python 3.12 grammar.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Right Antigravity Copilot Panel -->
+            <aside class="antigravity-panel">
+                <div class="ag-header">
+                    <div class="ag-title">
+                        <span class="ag-sparkle">✦</span>
+                        <span>ANTIGRAVITY SWE COPILOT</span>
+                    </div>
+                    <span class="ag-badge">Gemma 2</span>
+                </div>
+
+                <!-- Launch / Task Prompt Section -->
+                <div class="ag-task-card">
+                    <div class="ag-card-header">Autonomous Goal</div>
+                    <p class="ag-task-text" id="ag-task-desc">
+                        Inspect codebase, locate token session refresh bug in auth_service.py, repair token rotation without breaking baseline tests, and verify hidden test suite.
+                    </p>
+                    <button class="ag-launch-btn" id="ag-launch-btn">
+                        <span class="btn-sparkle">✦</span> Launch GemmaSWE Agent
+                    </button>
+                </div>
+
+                <!-- Live Agent Step Feed -->
+                <div class="ag-feed-header">
+                    <span>AGENT REASONING & ACTIONS</span>
+                    <span class="ag-step-count" id="step-counter">0 Steps</span>
+                </div>
+
+                <div class="ag-feed" id="ag-feed">
+                    <div class="ag-placeholder">
+                        <span>Waiting to launch...</span>
+                        <small>Gemma will perform repository analysis, test baseline capture, AST grounding, targeted edits, and regression verification.</small>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Statusbar (Bottom strip) -->
+        <footer class="statusbar">
+            <div class="status-left">
+                <span class="status-item branch"><span class="git-icon">⎇</span> main*</span>
+                <span class="status-item errors">⊗ 0  ⚠ 0</span>
+                <span class="status-item model-info">Model: Gemma 2 (Instruction Tuned)</span>
+            </div>
+            <div class="status-center" id="status-center-text">
+                GemmaSWE Workspace Ready
+            </div>
+            <div class="status-right">
+                <span class="status-item" id="status-tests">Tests: 3/3 Baseline</span>
+                <span class="status-item score-pill" id="status-score">Score: 100/100 PASSED</span>
+                <span class="status-item">UTF-8</span>
+                <span class="status-item">Python 3.12</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
